@@ -1,1 +1,16 @@
+main {
+  min-height: 80vh;
+}
 
+img {
+  height: 200px;
+}
+.cover {
+  object-fit: cover;
+}
+.rating span {
+  margin: 0.1rem;
+}
+h3 {
+  padding: 1rem 0;
+}
