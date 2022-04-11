@@ -9,6 +9,7 @@ import Chef from './models/chefModel.js'
 import Order from './models/orderModel.js'  
 import Recipe from './models/recipeModel.js'
 import connectDB from './config/db.js'
+import UserRecipe from './models/userRecipeModel.js'
 
 dotenv.config()
 
@@ -20,7 +21,10 @@ const importData = async () => {
         await Chef.deleteMany()
         await User.deleteMany()
         await Recipe.deleteMany()
+        await UserRecipe.deleteMany()
 
+
+        
         const createdUsers = await User.insertMany(users)
         const adminUser = createdUsers[0]._id
         const sampleChefs = chefs.map(chef => {
@@ -29,6 +33,7 @@ return{...chef, user: adminUser}
         const sampleRecipes = recipes.map(recipe => {
             return{...recipe, user: adminUser}
                     })
+                    
 
         await Chef.insertMany(sampleChefs)
         await Recipe.insertMany(sampleRecipes)
@@ -49,6 +54,7 @@ const destroyData = async () => {
         await Chef.deleteMany()
         await User.deleteMany()
         await Recipe.deleteMany()
+        await UserRecipe.deleteMany()
 
 
         

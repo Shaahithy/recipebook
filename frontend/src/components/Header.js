@@ -1,8 +1,10 @@
 import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import {logout} from '../actions/userActions'
+
 
 const Header = () => {
 
@@ -24,7 +26,8 @@ const Header = () => {
     </LinkContainer>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto">
+   
+      <Nav className="ms-auto">
       <LinkContainer to='/cart'>
         <Nav.Link><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
         </LinkContainer>
@@ -45,11 +48,30 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
               )}
-        <LinkContainer to='/recipe'>
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/cheflist'>
+                    <NavDropdown.Item>Recipe Books</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/recipelist'>
+                    <NavDropdown.Item>Recipes</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/userRecipelist'>
+                    <NavDropdown.Item>User Recipes</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
+        <LinkContainer to='/myrecipe'>
         <Nav.Link>My Recipes</Nav.Link>
         </LinkContainer>
-        <LinkContainer to='/SendRecipes'>
-        <Nav.Link>Send Recipes</Nav.Link>
+        <LinkContainer to='/about'>
+        <Nav.Link>About</Nav.Link>
         </LinkContainer>
       </Nav>
     </Navbar.Collapse>

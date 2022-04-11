@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import { Route } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import Message from '../components/Message'
@@ -6,21 +7,28 @@ import Loader from '../components/Loader'
 import Recipe from '../components/Recipe'
 import { listRecipes } from '../actions/recipeActions'
 
+import SearchBoxRecipe from '../components/SearchBoxRecipe'
 
-const RecipeScreen = () => {
+
+
+
+const HomeRecipeScreen = ({match}) => {
+  const keywordrecipe = match.params.keywordrecipe
+  
   const dispatch = useDispatch()
 
   const recipeList = useSelector( state => state.recipeList) 
   const { loading, error, recipes} = recipeList
   
   useEffect(() => {
-    dispatch(listRecipes())
-  }, [dispatch])
+    dispatch(listRecipes(keywordrecipe))
+  }, [dispatch, keywordrecipe])
 
   
   return (
     <>
       <h1>Yummy Recipes</h1>
+      <Route render={({ history }) => <SearchBoxRecipe history={history}/>} />
       {loading ? 
       (<Loader/>
         ) : error ? (
@@ -34,9 +42,8 @@ const RecipeScreen = () => {
 ))}
       </Row>
       )}
- 
     </>
   )
 }
 
-export default RecipeScreen
+export default HomeRecipeScreen

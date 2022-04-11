@@ -14,6 +14,18 @@ import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
+import UserListScreen from './screens/UserListScreen';
+import UserEditScreen from './screens/UserEditScreen';
+import ChefListScreen from './screens/ChefListScreen';
+import ChefEditScreen from './screens/ChefEditScreen';
+import OrderListScreen from './screens/OrderListScreen';
+import RecipeListScreen from './screens/RecipeListScreen';
+import RecipeEditScreen from './screens/RecipeEditScreen';
+import AboutScreen from './screens/AboutScreen';
+import UserRecipeListScreen from './screens/UserRecipeListScreen';
+import UserRecipeDetailScreen from './screens/UserRecipeDetailScreen';
+
+
 function App() {
   
   return (
@@ -31,10 +43,22 @@ function App() {
     <Route path='/register' component={RegisterScreen} />
     <Route path='/profile' component={ProfileScreen} />
    <Route path='/' component={HomeScreen} exact />
-   <Route path='/recipe' component={HomeRecipeScreen}  />
+   <Route path='/myrecipe' component={HomeRecipeScreen}  />
    <Route path='/chef/:id' component={ChefScreen} />
    <Route path='/recipe/:id' component={RecipeScreen} />
    <Route path='/cart/:id?' component={CartScreen} />
+   <Route path='/admin/userlist' component={UserListScreen} />
+   <Route path='/admin/user/:id/edit' component={UserEditScreen} />
+   <Route path='/admin/cheflist' component={ChefListScreen} />
+   <Route path='/admin/chef/:id/edit' component={ChefEditScreen} />
+   <Route path='/admin/orderlist' component={OrderListScreen} />
+   <Route path='/admin/recipelist' component={RecipeListScreen} />
+   <Route path='/admin/recipe/:id/edit' component={RecipeEditScreen} />
+   <Route path='/search/:keyword' component={HomeScreen} />
+   <Route path='/searchrecipe/search/:keywordrecipe' component={HomeRecipeScreen} />
+   <Route path='/about' component={AboutScreen}/>
+   <Route path='/admin/userRecipelist' component={UserRecipeListScreen} />
+   <Route path='/admin/userRecipe/:id' component={UserRecipeDetailScreen}/>
     </Container>
    
      

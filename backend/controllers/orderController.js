@@ -74,7 +74,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 })
 
 
-/*const updateOrderToDelivered = asyncHandler(async (req, res) => {
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
 
   if (order) {
@@ -88,7 +88,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('Order not found')
   }
-})*/
+})
 
 
 const getMyOrders = asyncHandler(async (req, res) => {
@@ -97,14 +97,16 @@ const getMyOrders = asyncHandler(async (req, res) => {
 })
 
 
-/*const getOrders = asyncHandler(async (req, res) => {
+const getOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({}).populate('user', 'id name')
   res.json(orders)
-})*/
+})
 
 export {
   addOrderItems,
   getOrderById,
   updateOrderToPaid,
-  getMyOrders
+  getMyOrders,
+  getOrders,
+  updateOrderToDelivered
 }
